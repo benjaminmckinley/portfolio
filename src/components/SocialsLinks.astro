@@ -1,0 +1,31 @@
+---
+import githubLogo from "../assets/github.svg";
+import linkedinLogo from "../assets/linkedin.svg";
+import goodreadsLogo from "../assets/goodreads.svg";
+
+const githubUrl = "https://github.com/benjaminmckinley";
+const linkedInUrl = "https://www.linkedin.com/in/benjaminmckinley/";
+const goodreadsUrl = "https://www.goodreads.com/user/show/161495954-benjamin";
+---
+
+<section id="socials">
+  <a href={githubUrl}><img alt="GitHub logo" src={githubLogo.src} /></a>
+  <a href={linkedInUrl}><img alt="LinkedIn logo" src={linkedinLogo.src} /></a>
+  <a href={goodreadsUrl}><img alt="GoodReads logo" src={goodreadsLogo.src} /></a
+  >
+</section>
+
+<style>
+  img {
+    height: 24px;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 8px;
+  }
+
+  #socials {
+  }
+</style>

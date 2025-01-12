@@ -1,0 +1,32 @@
+---
+import Navigation from "./Navigation.astro";
+import signatureLogo from "../assets/signature-logo.svg";
+---
+
+<header>
+  <nav>
+    <div id="title">
+      <a href="/"
+        ><img
+          alt="The main logo, a handwritten signature"
+          src={signatureLogo.src}
+          height="32px"
+        />
+        Benjamin McKinley
+      </a>
+    </div>
+    <Navigation />
+  </nav>
+</header>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #title {
+    font-size: 32px;
+  }
+</style>

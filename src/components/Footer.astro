@@ -1,0 +1,16 @@
+---
+import SocialsLinks from "./SocialsLinks.astro";
+import astroLogo from "../assets/astro.svg";
+const year = new Date(Date.now()).getFullYear();
+---
+
+<footer>
+  <div>
+    <span>{year} &copy; Benjamin McKinley</span>
+    <span
+      >Built with <a href="https://astro.build"><img src={astroLogo.src} /></a
+      ></span
+    >
+    <SocialsLinks />
+  </div>
+</footer>
