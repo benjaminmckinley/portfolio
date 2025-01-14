@@ -12,7 +12,7 @@ const blog = defineCollection<ZodType<Article>>({
     description: z.string(),
     author: z.string(),
     image: z.object({
-      url: z.string(),
+      url: z.string().url(),
       alt: z.string(),
     }),
     tags: z.array(z.string()),
@@ -24,19 +24,23 @@ const projects = defineCollection<ZodType<Project>>({
   schema: z.object({
     title: z.string(),
     date: z.union([
-      z.date(),
-      z.object({
-        startDate: z.date(),
-        endDate: z.date(),
-      }),
+      z.coerce.date(),
+      z
+        .object({
+          startDate: z.coerce.date(),
+          endDate: z.coerce.date(),
+        })
+        .refine((value) => {
+          return value.startDate <= value.endDate;
+        }),
     ]),
     description: z.string(),
     author: z.string(),
     image: z.object({
-      url: z.string(),
+      url: z.string().url(),
       alt: z.string(),
     }),
-    url: z.string(),
+    url: z.string().url(),
     tags: z.array(z.string()),
   }),
 });

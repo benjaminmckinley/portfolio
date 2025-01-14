@@ -5,6 +5,6 @@ const { frontmatter } = Astro.props;
 <Layout>
 <h1>{frontmatter.title}</h1>
 <p>Written by {frontmatter.author}</p>
-    {frontmatter.tags.map(tag => <a href=`../../tags/${tag}`>{tag}</a>)}
+    {frontmatter.tags.map(tag => <a href=`../tags/${tag}`>{tag}</a>)}
 <slot />
 </Layout>

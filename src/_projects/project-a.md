@@ -1,13 +1,13 @@
 ---
 title: "Project A"
-pubDate: 2024-01-12
+date: 2024-4-1
 description: "My first description."
 author: "Benjamin"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."
+url: 'https://google.com'
 tags: ["astro", "blogging", "learning in public"]
-# layout: ../../layouts/PostLayout.astro
 ---
 
 # This is just a test
