@@ -1,0 +1,27 @@
+---
+import { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"a"> {
+  text: string;
+}
+
+const { text, ...attrs } = Astro.props;
+---
+
+<a class="chip" {...attrs}>
+  {text}
+</a>
+
+<style>
+  .chip {
+    background-color: var(--color-button);
+    border-radius: 32px;
+    padding: 8px;
+    width: fit-content;
+    height: fit-content;
+
+    &:hover {
+      text-decoration: none;
+      background-color: var(--color-button-active);
+    }
+  }
+</style>

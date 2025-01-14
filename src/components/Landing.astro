@@ -2,8 +2,8 @@
 import headshot from "../assets/bridge-benjamin.jpeg";
 import background from "../assets/background.svg";
 import SocialsLinks from "./SocialsLinks.astro";
-import { getCollection } from "astro:content";
 import ProjectList from "./ProjectList.astro";
+import Chip from "./Chip.astro";
 ---
 
 <div id="container">
@@ -22,13 +22,19 @@ import ProjectList from "./ProjectList.astro";
     <a id="headshot" href="https://maps.app.goo.gl/6Qtyq48Cp7SnVtxN9"
       ><img
         src={headshot.src}
-        height="480px"
         alt="Benjamin posing on a bridge in Acadia, ME"
       /></a
     >
   </section>
   <section id="selected-projects">
-    <h1>Selected Projects</h1>
+    <div class="section-header-button">
+      <h1>Selected Projects</h1><Chip text="View all" href="/projects" />
+    </div>
+    <ProjectList />
+  </section>
+
+  <section id="recent-articles">
+    <h1>Articles</h1>
     <ProjectList />
   </section>
 </div>
@@ -52,8 +58,9 @@ import ProjectList from "./ProjectList.astro";
     display: flex;
     align-items: start;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     padding: 16px;
+    margin: 256px 0;
 
     h1 {
       font-size: 56px;
@@ -61,6 +68,14 @@ import ProjectList from "./ProjectList.astro";
   }
 
   #headshot img {
+    height: 480px;
     box-shadow: var(--box-shadow-static);
+  }
+
+  .section-header-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>

@@ -9,7 +9,7 @@ const { project, id } = Astro.props<Project>;
 ---
 
 <div id="project-card">
-  <a href=`projects/${id}`
+  <a href=`projects/${id}` class="image-container"
     ><img src={project.image.url} alt={project.image.alt} /></a
   >
   <div id="info">
@@ -22,7 +22,7 @@ const { project, id } = Astro.props<Project>;
     </span>{project.affiliation && <span>{project.affiliation}</span>}
   </div>
   <a href=`projects/${id}`><h2>{project.title}</h2></a>
-  <p>{project.description}</p>
+  <p id="description">{project.description}</p>
 </div>
 
 <style>
@@ -31,15 +31,32 @@ const { project, id } = Astro.props<Project>;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+
+      color: var(--color-text-secondary);
     }
 
     img {
+      width: 100%;
+    }
+
+    .image-container {
+      width: 100%;
+      overflow: hidden;
+      display: inline-block;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .image-container img {
       border-radius: var(--rounded-border-radius);
     }
-  }
 
-  #project-card,
-  #project-card img {
-    width: 360px;
+    .image-container:hover {
+      transform: translateY(-8px);
+    }
+
+    #description {
+      color: var(--color-text-secondary);
+      font-weight: lighter;
+    }
   }
 </style>
