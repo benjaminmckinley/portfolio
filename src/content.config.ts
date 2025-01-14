@@ -42,6 +42,7 @@ const projects = defineCollection<ZodType<Project>>({
     }),
     url: z.string().url(),
     tags: z.array(z.string()),
+    affiliation: z.string().optional(),
   }),
 });
 

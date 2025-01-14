@@ -6,6 +6,7 @@ export type Project = {
   image: ProjectImage;
   url: string;
   tags: string[];
+  affiliation?: string;
 };
 
 type ProjectImage = {
