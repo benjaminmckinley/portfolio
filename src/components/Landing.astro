@@ -7,26 +7,24 @@ import SocialsLinks from "./SocialsLinks.astro";
 <div id="container">
   <img id="background" src={background.src} alt="" fetchpriority="high" />
 
-  <main>
-    <section id="hero">
-      <div>
-        <h1>Hi, my name is <b>Benjamin</b> 👋🏼</h1>
-        <h2>Software Engineer</h2>
-        <p>
-          I help build scalable enterprise software and support the Developer
-          Experience.
-        </p>
-        <SocialsLinks />
-      </div>
-      <a id="headshot" href="https://maps.app.goo.gl/6Qtyq48Cp7SnVtxN9"
-        ><img
-          src={headshot.src}
-          height="480px"
-          alt="Benjamin posing on a bridge in Acadia, ME"
-        /></a
-      >
-    </section>
-  </main>
+  <section id="hero">
+    <div>
+      <h1>Hi, my name is <b>Benjamin</b> 👋🏼</h1>
+      <h2>Software Engineer</h2>
+      <p>
+        I help build scalable enterprise software and support the Developer
+        Experience.
+      </p>
+      <SocialsLinks />
+    </div>
+    <a id="headshot" href="https://maps.app.goo.gl/6Qtyq48Cp7SnVtxN9"
+      ><img
+        src={headshot.src}
+        height="480px"
+        alt="Benjamin posing on a bridge in Acadia, ME"
+      /></a
+    >
+  </section>
 </div>
 
 <style>
@@ -41,15 +39,7 @@ import SocialsLinks from "./SocialsLinks.astro";
   }
 
   #container {
-    font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
-      Arial, sans-serif;
     height: 100%;
-  }
-
-  main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
   }
 
   #hero {
@@ -61,7 +51,7 @@ import SocialsLinks from "./SocialsLinks.astro";
   }
 
   #headshot img {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: var(--box-shadow-static);
   }
 
   h1 {

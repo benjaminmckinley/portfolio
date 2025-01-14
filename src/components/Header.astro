@@ -1,19 +1,15 @@
 ---
 import Navigation from "./Navigation.astro";
-import signatureLogo from "../assets/signature-logo.svg";
+import SignatureLogo from "../assets/signature-logo.svg";
 ---
 
 <header>
   <nav>
     <div id="title">
-      <a href="/"
-        ><img
-          alt="The main logo, a handwritten signature"
-          src={signatureLogo.src}
-          height="32px"
-        />
-        Benjamin McKinley
+      <a href="/" id="logo-icon">
+        <SignatureLogo alt="The main logo, a handwritten set of initials" />
       </a>
+      <a href="/" id="logo-text">Benjamin McKinley</a>
     </div>
     <Navigation />
   </nav>
@@ -27,6 +23,32 @@ import signatureLogo from "../assets/signature-logo.svg";
   }
 
   #title {
-    font-size: 32px;
+    display: flex;
+    align-items: center;
+
+    #logo-text {
+      font-size: 24px;
+      color: var(--color-logo-text);
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    #logo-icon {
+      text-decoration: none;
+      width: auto;
+      padding: 0;
+      margin-right: 8px;
+
+      svg {
+        width: 48px;
+        height: 32px;
+        fill: var(--color-logo-icon);
+      }
+      svg:hover path {
+        fill: var(--color-highlight)
+      }
+    }
   }
 </style>

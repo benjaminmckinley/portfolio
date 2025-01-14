@@ -1,6 +1,29 @@
-<div>
-  <a href="/projects/">Work</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags">Tags</a>
-</div>
+---
+const pathname = new URL(Astro.request.url).pathname;
+const rootPath = pathname.split("/")[1];
+---
+
+<ul>
+  <li class={rootPath === "projects" && "active"}>
+    <a href="/projects/">Projects</a>
+  </li>
+  <li class={rootPath === "about" && "active"}>
+    <a href="/about/">About</a>
+  </li>
+  <li class={rootPath === "posts" && "active"}>
+    <a href="/posts/">Blog</a>
+  </li>
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    .active {
+      text-decoration: underline;
+    }
+  }
+</style>

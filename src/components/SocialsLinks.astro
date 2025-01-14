@@ -1,31 +1,64 @@
 ---
-import githubLogo from "../assets/github.svg";
-import linkedinLogo from "../assets/linkedin.svg";
-import goodreadsLogo from "../assets/goodreads.svg";
+import GithubLogo from "../assets/github.svg";
+import LinkedInLogo from "../assets/linkedin.svg";
+import GoodreadsLogo from "../assets/goodreads.svg";
 
 const githubUrl = "https://github.com/benjaminmckinley";
 const linkedInUrl = "https://www.linkedin.com/in/benjaminmckinley/";
 const goodreadsUrl = "https://www.goodreads.com/user/show/161495954-benjamin";
 ---
 
-<section id="socials">
-  <a href={githubUrl}><img alt="GitHub logo" src={githubLogo.src} /></a>
-  <a href={linkedInUrl}><img alt="LinkedIn logo" src={linkedinLogo.src} /></a>
-  <a href={goodreadsUrl}><img alt="GoodReads logo" src={goodreadsLogo.src} /></a
-  >
-</section>
+<ul id="social-links">
+  <li>
+    <a href={githubUrl} aria-label="GitHub link"
+      ><GithubLogo alt="GitHub logo" loading="lazy" /></a
+    >
+  </li>
+  <li>
+    <a href={linkedInUrl} aria-label="LinkedIn link"
+      ><LinkedInLogo alt="LinkedIn logo" loading="lazy" /></a
+    >
+  </li>
+  <li>
+    <a href={goodreadsUrl} aria-label="GoodReads link"
+      ><GoodreadsLogo alt="GoodReads logo" loading="lazy" /></a
+    >
+  </li>
+</ul>
 
 <style>
-  img {
-    height: 24px;
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+
+    path {
+      fill: var(--color-icon);
+    }
   }
 
   a {
     color: white;
     text-decoration: none;
-    padding: 0 8px;
-  }
 
-  #socials {
+    padding: 12px;
+
+    display: inline-flex;
+
+    background-color: var(--color-button);
+    border-radius: var(--rounded-border-radius);
+
+    &:hover {
+      background-color: var(--color-highlight);
+      svg path {
+        fill: var(--color-icon-contrast);
+      }
+    }
   }
 </style>
