@@ -12,7 +12,7 @@ const { project, id } = Astro.props<Project>;
   <a href=`projects/${id}`
     ><img src={project.image.url} alt={project.image.alt} /></a
   >
-  <div>
+  <div id="info">
     <span
       >{
         project.date instanceof Date
@@ -21,21 +21,25 @@ const { project, id } = Astro.props<Project>;
       }
     </span>{project.affiliation && <span>{project.affiliation}</span>}
   </div>
-  <a href=`projects/${id}`><h1>{project.title}</h1></a>
+  <a href=`projects/${id}`><h2>{project.title}</h2></a>
   <p>{project.description}</p>
 </div>
 
 <style>
   #project-card {
-    width: 480px;
-    height: 360px;
-
-    //background-color: darkgray;
+    #info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     img {
-      width: 480px;
-
       border-radius: var(--rounded-border-radius);
     }
+  }
+
+  #project-card,
+  #project-card img {
+    width: 360px;
   }
 </style>
