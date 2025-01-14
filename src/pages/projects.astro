@@ -1,5 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+const allProjects = await getCollection("projects");
 ---
 
-<Layout>Projects page</Layout>
+<Layout>
+  <h1>Projects</h1>
+  <p>Projects I've Built</p>
+  <ul>
+    {
+      allProjects.map((project: any) => (
+        <li>
+          <a href={`/project/${project.id}/`}>{project.id}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

@@ -1,10 +1,11 @@
-// Import the glob loader
 import { glob } from "astro/loaders";
-// Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-// Define a `loader` and `schema` for each collection
-const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/blog" }),
+import type { Project } from "./_projects/project";
+import { ZodType } from "zod";
+import type { Article } from "./_blog/post";
+
+const blog = defineCollection<ZodType<Article>>({
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/_blog" }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -17,5 +18,27 @@ const blog = defineCollection({
     tags: z.array(z.string()),
   }),
 });
-// Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+
+const projects = defineCollection<ZodType<Project>>({
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/_projects" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.union([
+      z.date(),
+      z.object({
+        startDate: z.date(),
+        endDate: z.date(),
+      }),
+    ]),
+    description: z.string(),
+    author: z.string(),
+    image: z.object({
+      url: z.string(),
+      alt: z.string(),
+    }),
+    url: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+export const collections = { blog, projects };
