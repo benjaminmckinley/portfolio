@@ -2,6 +2,8 @@
 import headshot from "../assets/bridge-benjamin.jpeg";
 import background from "../assets/background.svg";
 import SocialsLinks from "./SocialsLinks.astro";
+import { getCollection } from "astro:content";
+import ProjectList from "./ProjectList.astro";
 ---
 
 <div id="container">
@@ -24,6 +26,9 @@ import SocialsLinks from "./SocialsLinks.astro";
         alt="Benjamin posing on a bridge in Acadia, ME"
       /></a
     >
+  </section>
+  <section id="selected-projects">
+    <ProjectList />
   </section>
 </div>
 

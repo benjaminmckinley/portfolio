@@ -1,8 +1,8 @@
 import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
-import type { Project } from "./_projects/project";
 import { ZodType } from "zod";
-import type { Article } from "./_blog/post";
+import type { Article } from "./pages/blog/post";
+import type {Project} from "./pages/projects/project";
 
 const blog = defineCollection<ZodType<Article>>({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/_blog" }),

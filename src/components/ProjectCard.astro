@@ -1,0 +1,41 @@
+---
+import { Project } from "../pages/projects/project";
+
+interface Props {
+  project: Project;
+}
+
+const { project, id } = Astro.props<Project>;
+---
+
+<div id="project-card">
+  <a href=`projects/${id}`
+    ><img src={project.image.url} alt={project.image.alt} /></a
+  >
+  <div>
+    <span
+      >{
+        project.date instanceof Date
+          ? project.date.toDateString()
+          : `${project.date.startDate.toDateString()} - ${project.date.startDate.toDateString()}`
+      }
+    </span>{project.affiliation && <span>{project.affiliation}</span>}
+  </div>
+  <a href=`projects/${id}`><h1>{project.title}</h1></a>
+  <p>{project.description}</p>
+</div>
+
+<style>
+  #project-card {
+    width: 480px;
+    height: 360px;
+
+    //background-color: darkgray;
+
+    img {
+      width: 480px;
+
+      border-radius: var(--rounded-border-radius);
+    }
+  }
+</style>

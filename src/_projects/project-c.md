@@ -1,7 +1,7 @@
 ---
-title: "Project A"
+title: "Project C"
 date: 2024-4-1
-description: "My first description."
+description: "My second description."
 author: "Benjamin"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
