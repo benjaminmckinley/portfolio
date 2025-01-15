@@ -4,6 +4,7 @@ import background from "../assets/background.svg";
 import SocialsLinks from "./SocialsLinks.astro";
 import ProjectList from "./ProjectList.astro";
 import Chip from "./Chip.astro";
+import PostList from "./PostList.astro";
 ---
 
 <div id="container">
@@ -35,9 +36,9 @@ import Chip from "./Chip.astro";
 
   <section id="recent-articles">
     <div class="section-header-button">
-      <h1>Articles</h1><Chip text="View all" href="/blog" />
+      <h1>Recent Writing</h1><Chip text="View all" href="/blog" />
     </div>
-    <ProjectList />
+    <PostList />
   </section>
 </div>
 
@@ -69,6 +70,10 @@ import Chip from "./Chip.astro";
     }
   }
 
+  #headshot {
+    padding: 32px;
+  }
+  
   #headshot img {
     height: 480px;
     box-shadow: var(--box-shadow-static);

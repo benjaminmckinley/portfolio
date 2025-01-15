@@ -1,13 +1,13 @@
-export type Article = {
+export type Post = {
   title: string;
   pubDate: Date;
   description: string;
   author: string;
-  image: ArticleImage;
+  image: PostImage;
   tags: string[];
 };
 
-type ArticleImage = {
+type PostImage = {
   url: string;
   alt: string;
 };

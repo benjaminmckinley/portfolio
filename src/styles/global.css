@@ -1,29 +1,28 @@
 :root {
-    --color-logo-text: black;
-    --color-logo-icon: black;
-    --color-link: black;
-    --color-button: rgba(244, 236, 239);
-    --color-button-active: rgb(243, 224, 233);
-    --color-border: rgba(228, 230, 235);
-    --color-text-primary: black;
-    --color-text-secondary: gray;
-    --rounded-border-radius: 8px;
-    --color-icon: black;
-    --color-icon-contrast: white;
-    --color-highlight: #4a6741;
-    --box-shadow-static: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    
+  --color-logo-text: black;
+  --color-logo-icon: black;
+  --color-link: black;
+  --color-button: rgba(244, 236, 239);
+  --color-button-active: rgb(243, 224, 233);
+  --color-border: rgba(228, 230, 235);
+  --color-text-primary: black;
+  --color-text-secondary: gray;
+  --rounded-border-radius: 8px;
+  --color-icon: black;
+  --color-icon-contrast: white;
+  --color-highlight: #4a6741;
+  --box-shadow-static: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-    font-family: "Geist", serif;
-    font-optical-sizing: auto;
+  font-family: "Geist", serif;
+  font-optical-sizing: auto;
 }
 
 a {
-    color: var(--color-link);
+  color: var(--color-link);
 
-    text-decoration: none;
-    
-    &:hover {
-        text-decoration: underline;
-    }
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

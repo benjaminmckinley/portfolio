@@ -8,6 +8,6 @@ export default defineConfig({
   integrations: [react()],
   site: "https://example.com",
   experimental: {
-    svg: true
-  }
+    svg: true,
+  },
 });

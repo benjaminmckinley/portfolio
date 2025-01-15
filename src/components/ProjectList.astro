@@ -1,14 +1,25 @@
 ---
-import ProjectCard from "./ProjectCard.astro";
 import { getCollection } from "astro:content";
+import GridCard from "./GridCard.astro";
+import {type ProjectDate} from "../pages/projects/project";
 
 const allProjects = await getCollection("projects");
+
+const formatProjectDateString = (date: ProjectDate) => {
+    const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric'});
+    
+    return date instanceof Date
+        ? formatDate(date)
+        : `${formatDate(date.startDate)} - ${formatDate(date.endDate)}`
+}
 ---
 
 <div id="project-list">
   {
-    allProjects.map((project) => (
-      <ProjectCard id={project.id} project={project.data} />
+    allProjects.map(({id, data: project}) => (
+      <GridCard title={project.title} description={project.description} image={
+          project.image
+      } date={formatProjectDateString(project.date)} url={`./projects/${id}`} externalLink={project.url} author={project.author} affiliation={project.affiliation}/>
     ))
   }
 </div>
