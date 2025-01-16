@@ -1,0 +1,28 @@
+---
+interface Props {
+    tags: string[];
+    baseUrl: string; 
+}
+
+const { tags, baseUrl } = Astro.props;
+---
+
+<div class="tags-container">{tags.map(tag => <a href=`${baseUrl}/tags/${tag}`>{tag}</a>)}</div>
+
+<style>
+    .tags-container {
+        display: flex;
+        gap: 8px;
+
+        a {
+            padding: 4px;
+
+            background-color: var(--color-button);
+
+            &:hover {
+                text-decoration: none;
+                background-color: var(--color-button-active);
+            }
+        }
+    }
+</style>

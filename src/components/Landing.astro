@@ -1,14 +1,15 @@
 ---
 import headshot from "../assets/bridge-benjamin.jpeg";
-import background from "../assets/background.svg";
 import SocialsLinks from "./SocialsLinks.astro";
+import ProjectList from "./ProjectList.astro";
+import Chip from "./Chip.astro";
+import PostList from "./PostList.astro";
 ---
 
 <div id="container">
-  <img id="background" src={background.src} alt="" fetchpriority="high" />
 
   <section id="hero">
-    <div>
+    <div id="introduction">
       <h1>Hi, my name is <b>Benjamin</b> 👋🏼</h1>
       <h2>Software Engineer</h2>
       <p>
@@ -20,10 +21,22 @@ import SocialsLinks from "./SocialsLinks.astro";
     <a id="headshot" href="https://maps.app.goo.gl/6Qtyq48Cp7SnVtxN9"
       ><img
         src={headshot.src}
-        height="480px"
         alt="Benjamin posing on a bridge in Acadia, ME"
       /></a
     >
+  </section>
+  <section id="selected-projects">
+    <div class="section-header-button">
+      <h1>Selected Projects</h1><Chip text="View all" href="/projects/" />
+    </div>
+    <ProjectList />
+  </section>
+
+  <section id="recent-articles">
+    <div class="section-header-button">
+      <h1>Recent Writing</h1><Chip text="View all" href="/blog/" />
+    </div>
+    <PostList />
   </section>
 </div>
 
@@ -40,21 +53,47 @@ import SocialsLinks from "./SocialsLinks.astro";
 
   #container {
     height: 100%;
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
   }
 
   #hero {
     display: flex;
     align-items: start;
     flex-direction: row;
-    justify-content: center;
-    padding: 16px;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 56px;
+    }
+  }
+  
+  #introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
+  #headshot {
+    padding: 32px;
+  }
+  
   #headshot img {
+    height: 480px;
     box-shadow: var(--box-shadow-static);
   }
 
-  h1 {
-    font-size: 56px;
+  .section-header-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    #hero {
+      flex-direction: column;
+    }
   }
 </style>
