@@ -22,7 +22,7 @@ const { posts } = Astro.props;
 const filteredPosts = posts.filter((post: any) => post.data.tags?.includes(tag));
 ---
 <Layout>
-    <p>Posts tagged with {tag}</p>
+    <h1>Posts tagged with {tag}</h1>
     <ul>
         {filteredPosts.map((post: any) => <li><a href=`../posts/${post.id}`>{post.data.title}</a></li>)}
     </ul>

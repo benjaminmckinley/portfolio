@@ -1,10 +1,64 @@
 ---
 import Layout from "./Layout.astro";
-const { frontmatter } = Astro.props;
+import {type Post} from "../pages/blog/post";
+import Tags from "../components/Tags.astro";
+import type {Project, ProjectDate} from "../pages/projects/project";
+const { content, frontmatter } = Astro.props;
+
+
+const project = frontmatter as Project;
+
+const formatProjectDateString = (date: ProjectDate) => {
+    const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric'});
+
+    return date instanceof Date
+        ? formatDate(date)
+        : `${formatDate(date.startDate)} - ${formatDate(date.endDate)}`
+}
+
 ---
 <Layout>
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-    {frontmatter.tags.map(tag => <a href=`../tags/${tag}`>{tag}</a>)}
-<slot />
+    <div class="project-meta">
+        <div class="project-date">{formatProjectDateString(project.date)}</div>
+        <Tags tags={project.tags} />
+    </div>
+
+    <h1>{project.title}</h1>
+    <p class="project-description">{project.description}</p>
+    <img class="project-image" src={project.image.url} alt={project.image.alt} />
+    <slot />
 </Layout>
+
+<style>
+    .project-meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .project-description {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--color-text-secondary)
+    }
+
+    .project-author {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 8px;
+
+        img {
+            height: 32px;
+            width: 32px;
+            border-radius: 100%;
+        }
+    }
+
+    .project-image {
+        width: 100%;
+        border-radius: var(--rounded-border-radius);
+    }
+</style>

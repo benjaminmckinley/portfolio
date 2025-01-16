@@ -26,7 +26,7 @@ const { title, description, image, date, author, affiliation, url, externalLink 
     <span>{date}</span>{affiliation && <span>{affiliation}</span>}
   </div>
   <div class="card-title-container"><a class="card-title" href={url}><h2>{title}</h2></a>{externalLink && <a class="external-linkout" href={externalLink} target="_blank" referrerpolicy="no-referrer"><ArrowSquareIcon height='16px' width="16px" /></a>}</div>
-  <p class="card-description">{description}</p>
+  <div class="card-description">{description}</div>
 </div>
 
 <style>
@@ -52,6 +52,7 @@ const { title, description, image, date, author, affiliation, url, externalLink 
 
     .card-image img {
       border-radius: var(--rounded-border-radius);
+      aspect-ratio: 3/2;
     }
 
     .card-image:hover {
@@ -67,7 +68,7 @@ const { title, description, image, date, author, affiliation, url, externalLink 
 
     .card-description {
       color: var(--color-text-secondary);
-      font-weight: lighter;
+      font-weight: 200;
     }
     
     .external-linkout {
