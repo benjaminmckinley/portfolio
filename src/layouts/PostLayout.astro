@@ -2,17 +2,15 @@
 import Layout from "./Layout.astro";
 import {type Post} from "../pages/blog/post";
 import Tags from "../components/Tags.astro";
-const { content, frontmatter } = Astro.props;
+const { frontmatter, characterCount } = Astro.props;
 
 
 const post = frontmatter as Post;
 
 function readingTime() {
-    const text = 'todo get from post';
-    const wpm = 225;
-    const words = text.trim().split(/\s+/).length;
-    const time = Math.ceil(words / wpm);
-    return time;
+    const wpm = 225, averageWordLength = 5;
+    const estimatedWordCount = characterCount / averageWordLength;
+    return Math.ceil(estimatedWordCount / wpm);
 }
 
 ---
@@ -20,7 +18,7 @@ function readingTime() {
     <div class="post-meta">
         <div class="post-date">{post.pubDate.toDateString()}</div>
         {readingTime} minute read
-        <Tags tags={post.tags} />
+        <Tags tags={post.tags} baseUrl="/blog" />
     </div>
 
     <h1>{post.title}</h1>

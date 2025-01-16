@@ -1,10 +1,8 @@
 ---
 import Layout from "./Layout.astro";
-import {type Post} from "../pages/blog/post";
 import Tags from "../components/Tags.astro";
 import type {Project, ProjectDate} from "../pages/projects/project";
-const { content, frontmatter } = Astro.props;
-
+const { frontmatter } = Astro.props;
 
 const project = frontmatter as Project;
 
@@ -20,7 +18,7 @@ const formatProjectDateString = (date: ProjectDate) => {
 <Layout>
     <div class="project-meta">
         <div class="project-date">{formatProjectDateString(project.date)}</div>
-        <Tags tags={project.tags} />
+        <Tags tags={project.tags} baseUrl="/projects" />
     </div>
 
     <h1>{project.title}</h1>
