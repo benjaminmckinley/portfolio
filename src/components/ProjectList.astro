@@ -14,7 +14,7 @@ const formatProjectDateString = (date: ProjectDate) => {
 }
 ---
 
-<div id="project-list">
+<div id="project-list" class="grid grid-cols-1 md:grid-cols-3">
   {
     allProjects.map(({id, data: project}) => (
       <GridCard title={project.title} description={project.description} image={
@@ -23,15 +23,3 @@ const formatProjectDateString = (date: ProjectDate) => {
     ))
   }
 </div>
-
-<style>
-  #project-list {
-    display: grid;
-    grid-gap: 16px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
-</style>

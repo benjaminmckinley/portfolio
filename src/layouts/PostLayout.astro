@@ -2,9 +2,7 @@
 import Layout from "./Layout.astro";
 import {type Post} from "../pages/blog/post";
 import Tags from "../components/Tags.astro";
-import RssLogo from "../assets/rss.svg";
 const { frontmatter, characterCount } = Astro.props;
-
 
 const post = frontmatter as Post;
 

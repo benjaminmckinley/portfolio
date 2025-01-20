@@ -12,7 +12,7 @@ export default defineConfig({
     ],
     // site: "https://benjaminmckinley.com",
     site: "https://benjaminmckinley.github.io",
-    base: 'portfolio',
+    base: '.',
     experimental: {
         svg: true,
     },

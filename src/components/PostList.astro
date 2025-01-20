@@ -5,10 +5,10 @@ import {type ProjectDate} from "../pages/projects/project";
 
 const allPosts = await getCollection("blog");
 
-const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric'});
+const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric', day: "numeric"});
 ---
 
-<div id="post-list">
+<div id="post-list" class="grid grid-cols-1 gap-16 md:grid-cols-3">
   {
       allPosts.map(({id, data: post}) => (
       <GridCard title={post.title} description={post.description} image={
@@ -17,15 +17,3 @@ const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", y
     ))
   }
 </div>
-
-<style>
-  #post-list {
-    display: grid;
-    grid-gap: 16px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
-</style>
