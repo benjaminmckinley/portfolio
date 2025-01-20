@@ -10,6 +10,7 @@ const blog = defineCollection<ZodType<Post>>({
     title: z.string(),
     pubDate: z.date(),
     description: z.string(),
+    shortDescription: z.string().max(64),
     author: z.string(),
     image: z.object({
       url: z.string().url(),
@@ -35,6 +36,7 @@ const projects = defineCollection<ZodType<Project>>({
         }),
     ]),
     description: z.string(),
+    shortDescription: z.string().max(64),
     author: z.string(),
     image: z.object({
       url: z.string().url(),

@@ -14,12 +14,12 @@ const formatProjectDateString = (date: ProjectDate) => {
 }
 ---
 
-<div id="project-list" class="grid grid-cols-1 md:grid-cols-3">
+<div id="project-list" class="grid grid-cols-1 gap-4 gap-y-16 md:grid-cols-3 pt-8">
   {
     allProjects.map(({id, data: project}) => (
-      <GridCard title={project.title} description={project.description} image={
+      <GridCard title={project.title} description={project.shortDescription} image={
           project.image
-      } date={formatProjectDateString(project.date)} url={`./projects/${id}`} externalLink={project.url} author={project.author} affiliation={project.affiliation}/>
+      } date={formatProjectDateString(project.date)} url={`./projects/${id}`} externalLink={project.url} author={project.author} affiliation={project.affiliation} class="padding-0"/>
     ))
   }
 </div>

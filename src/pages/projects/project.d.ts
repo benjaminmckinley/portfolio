@@ -2,6 +2,7 @@ export type Project = {
   title: string;
   date: ProjectDate;
   description: string;
+  shortDescription: string;
   author: string;
   image: ProjectImage;
   url?: string;

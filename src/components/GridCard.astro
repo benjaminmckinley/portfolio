@@ -13,19 +13,20 @@ interface Props {
   affiliation?: string;
   url: string;
   externalLink?: string;
+  class?: string;
 }
 
-const { title, description, image, date, author, affiliation, url, externalLink } = Astro.props;
+const { title, description, image, date, author, affiliation, url, externalLink, class: className } = Astro.props;
 ---
 
-<div class="grid-card">
+<div class=`grid-card ${className}`>
   <a href={url} class="card-image"
     ><img src={image.url} alt={image.alt} /></a
   >
   <div class="card-info">
     <span>{date}</span>{affiliation && <span>{affiliation}</span>}
   </div>
-  <div class="card-title-container"><a class="card-title" href={url}><h2>{title}</h2></a>{externalLink && <a class="external-linkout" href={externalLink} target="_blank" referrerpolicy="no-referrer"><ArrowSquareIcon height='16px' width="16px" /></a>}</div>
+  <div class="card-title-container"><a class="card-title" href={url}><h3>{title}</h3></a>{externalLink && <a class="external-linkout" href={externalLink} target="_blank" referrerpolicy="no-referrer"><ArrowSquareIcon height='16px' width="16px" /></a>}</div>
   <div class="card-description">{description}</div>
 </div>
 
@@ -41,6 +42,9 @@ const { title, description, image, date, author, affiliation, url, externalLink 
 
     img {
       width: 100%;
+      object-position: center;
+      object-fit: cover;
+      border-radius: var(--rounded-border-radius);
     }
 
     .card-image {
@@ -48,15 +52,16 @@ const { title, description, image, date, author, affiliation, url, externalLink 
       overflow: hidden;
       display: inline-block;
       transition: transform 0.2s ease-in-out;
-    }
-
-    .card-image img {
-      border-radius: var(--rounded-border-radius);
       aspect-ratio: 3/2;
-    }
-
-    .card-image:hover {
-      transform: translateY(-8px);
+      border-radius: var(--rounded-border-radius);
+      
+      &:hover {
+        transform: translateY(-8px);
+        
+        img {
+          box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+      }
     }
     
     .card-title-container {
