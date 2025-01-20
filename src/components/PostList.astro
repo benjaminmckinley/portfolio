@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import GridCard from "./GridCard.astro";
+import {type ProjectDate} from "../pages/projects/project";
+
+const allPosts = await getCollection("blog");
+
+const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric'});
+---
+
+<div id="post-list">
+  {
+      allPosts.map(({id, data: post}) => (
+      <GridCard title={post.title} description={post.description} image={
+          post.image
+      } date={formatDate(post.pubDate)} url={`./blog/posts/${id}`} author={post.author} />
+    ))
+  }
+</div>
+
+<style>
+  #post-list {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+</style>

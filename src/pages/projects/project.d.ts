@@ -4,7 +4,7 @@ export type Project = {
   description: string;
   author: string;
   image: ProjectImage;
-  url: string;
+  url?: string;
   tags: string[];
   affiliation?: string;
 };

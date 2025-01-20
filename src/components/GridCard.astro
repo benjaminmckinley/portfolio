@@ -1,0 +1,84 @@
+---
+import ArrowSquareIcon from '../assets/arrow-p-right-from-square.svg';
+
+interface Props {
+  title: string;
+  description: string;
+  image: {
+    url: string;
+    alt: string;
+  }
+  date: string;
+  author: string;
+  affiliation?: string;
+  url: string;
+  externalLink?: string;
+}
+
+const { title, description, image, date, author, affiliation, url, externalLink } = Astro.props;
+---
+
+<div class="grid-card">
+  <a href={url} class="card-image"
+    ><img src={image.url} alt={image.alt} /></a
+  >
+  <div class="card-info">
+    <span>{date}</span>{affiliation && <span>{affiliation}</span>}
+  </div>
+  <div class="card-title-container"><a class="card-title" href={url}><h2>{title}</h2></a>{externalLink && <a class="external-linkout" href={externalLink} target="_blank" referrerpolicy="no-referrer"><ArrowSquareIcon height='16px' width="16px" /></a>}</div>
+  <div class="card-description">{description}</div>
+</div>
+
+<style>
+  .grid-card {
+    .card-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      color: var(--color-text-secondary);
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .card-image {
+      width: 100%;
+      overflow: hidden;
+      display: inline-block;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card-image img {
+      border-radius: var(--rounded-border-radius);
+      aspect-ratio: 3/2;
+    }
+
+    .card-image:hover {
+      transform: translateY(-8px);
+    }
+    
+    .card-title-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-description {
+      color: var(--color-text-secondary);
+      font-weight: 200;
+    }
+    
+    .external-linkout {
+      svg path {
+        fill: var(--color-text-secondary);
+      }
+      
+      &:hover svg path {
+        opacity: .8;
+      }
+    }
+  }
+</style>

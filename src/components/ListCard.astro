@@ -1,0 +1,21 @@
+---
+import ArrowSquareIcon from '../assets/arrow-p-right-from-square.svg';
+
+interface Props {
+    title: string;
+    description: string;
+    image: {
+        url: string;
+        alt: string;
+    }
+    date: string;
+    author: string;
+    affiliation?: string;
+    url: string;
+    externalLink?: string;
+}
+
+const { title, description, image, date, author, affiliation, url, externalLink } = Astro.props;
+---
+
+<div>listing</div>

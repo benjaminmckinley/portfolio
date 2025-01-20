@@ -1,10 +1,10 @@
 import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 import { ZodType } from "zod";
-import type { Article } from "./pages/blog/post";
-import type {Project} from "./pages/projects/project";
+import type { Post } from "./pages/blog/post";
+import type { Project } from "./pages/projects/project";
 
-const blog = defineCollection<ZodType<Article>>({
+const blog = defineCollection<ZodType<Post>>({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/_blog" }),
   schema: z.object({
     title: z.string(),
@@ -40,7 +40,7 @@ const projects = defineCollection<ZodType<Project>>({
       url: z.string().url(),
       alt: z.string(),
     }),
-    url: z.string().url(),
+    url: z.string().url().optional(),
     tags: z.array(z.string()),
     affiliation: z.string().optional(),
   }),
