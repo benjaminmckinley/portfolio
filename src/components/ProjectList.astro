@@ -1,25 +1,37 @@
 ---
 import { getCollection } from "astro:content";
 import GridCard from "./GridCard.astro";
-import {type ProjectDate} from "../pages/projects/project";
+import { type ProjectDate } from "../pages/projects/project";
 
 const allProjects = await getCollection("projects");
 
 const formatProjectDateString = (date: ProjectDate) => {
-    const formatDate = (d: Date) => d.toLocaleDateString('en-us', { month: "long", year: 'numeric'});
-    
-    return date instanceof Date
-        ? formatDate(date)
-        : `${formatDate(date.startDate)} - ${formatDate(date.endDate)}`
-}
+  const formatDate = (d: Date) =>
+    d.toLocaleDateString("en-us", { month: "long", year: "numeric" });
+
+  return date instanceof Date
+    ? formatDate(date)
+    : `${formatDate(date.startDate)} - ${formatDate(date.endDate)}`;
+};
 ---
 
-<div id="project-list" class="grid grid-cols-1 gap-4 gap-y-16 md:grid-cols-3 pt-8">
+<div
+  id="project-list"
+  class="grid grid-cols-1 gap-4 gap-y-16 md:grid-cols-3 pt-8"
+>
   {
-    allProjects.map(({id, data: project}) => (
-      <GridCard title={project.title} description={project.shortDescription} image={
-          project.image
-      } date={formatProjectDateString(project.date)} url={`./projects/${id}`} externalLink={project.url} author={project.author} affiliation={project.affiliation} class="padding-0"/>
+    allProjects.map(({ id, data: project }) => (
+      <GridCard
+        title={project.title}
+        description={project.shortDescription}
+        image={project.image}
+        date={formatProjectDateString(project.date)}
+        url={`./projects/${id}`}
+        externalLink={project.url}
+        author={project.author}
+        affiliation={project.affiliation}
+        class="padding-0"
+      />
     ))
   }
 </div>

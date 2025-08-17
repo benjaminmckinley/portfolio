@@ -1,6 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import {type Post} from "../pages/blog/post";
+import { type Post } from "../pages/blog/post";
 import Tags from "../components/Tags.astro";
 import MarkdownLayout from "./MarkdownLayout.astro";
 const { frontmatter, characterCount } = Astro.props;
@@ -8,56 +8,57 @@ const { frontmatter, characterCount } = Astro.props;
 const post = frontmatter as Post;
 
 function readingTime() {
-    const wpm = 225, averageWordLength = 5;
-    const estimatedWordCount = characterCount / averageWordLength;
-    return Math.ceil(estimatedWordCount / wpm);
+  const wpm = 225,
+    averageWordLength = 5;
+  const estimatedWordCount = characterCount / averageWordLength;
+  return Math.ceil(estimatedWordCount / wpm);
 }
-
 ---
+
 <Layout>
-    <div class="post-meta">
-        <div class="post-date">{post.pubDate.toDateString()}</div>
-        {readingTime} minute read
-        <Tags tags={post.tags} baseUrl="/blog" />
-    </div>
-    <h1>{post.title}</h1>
-    <p class="post-description">{post.description}</p>
-    <img class="post-image" src={post.image.url} alt={post.image.alt} />
-    <MarkdownLayout>
-        <slot />
-    </MarkdownLayout>
+  <div class="post-meta">
+    <div class="post-date">{post.pubDate.toDateString()}</div>
+    {readingTime} minute read
+    <Tags tags={post.tags} baseUrl="/blog" />
+  </div>
+  <h1>{post.title}</h1>
+  <p class="post-description">{post.description}</p>
+  <img class="post-image" src={post.image.url} alt={post.image.alt} />
+  <MarkdownLayout>
+    <slot />
+  </MarkdownLayout>
 </Layout>
 
 <style>
-    .post-meta {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
+  .post-meta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .post-description {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  .post-author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 8px;
+
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 100%;
     }
-    
-    .post-description {
-        font-size: 18px;
-        font-weight: 400;
-        color: var(--color-text-secondary)
-    }
-    
-    .post-author {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        
-        gap: 8px;
-        
-        img {
-            height: 32px;
-            width: 32px;
-            border-radius: 100%;
-        }
-    }
-    
-    .post-image {
-        width: 100%;
-        border-radius: var(--rounded-border-radius);
-    }
+  }
+
+  .post-image {
+    width: 100%;
+    border-radius: var(--rounded-border-radius);
+  }
 </style>

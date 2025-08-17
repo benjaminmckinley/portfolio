@@ -4,48 +4,60 @@ import SocialsLinks from "./SocialsLinks.astro";
 import ProjectList from "./ProjectList.astro";
 import Chip from "./Chip.astro";
 import RecentPostList from "./RecentPostList.astro";
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 
 const hasProjects = (await getCollection("projects")).length > 0;
 const hasPosts = (await getCollection("blog")).length > 0;
 ---
 
 <div id="container">
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center items-center mx-auto px-4">
+  <section
+    class="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center items-center mx-auto px-4"
+  >
     <div class="space-y-6">
       <h1 class="text-4xl md:text-5xl font-semibold">
         Hi, my name is <span class="font-bold">Benjamin</span> 👋🏼
       </h1>
-      <h2 class="text-2xl md:text-3xl text-gray-700">
-        Software Engineer
-      </h2>
+      <h2 class="text-2xl md:text-3xl text-gray-700">Software Engineer</h2>
       <p class="text-lg text-gray-600 max-w-prose">
-        I help build scalable enterprise software and support the Developer Experience.
+        I help build scalable enterprise software and support the Developer
+        Experience.
       </p>
       <SocialsLinks />
     </div>
     <a href="https://maps.app.goo.gl/6Qtyq48Cp7SnVtxN9" class="block">
       <img
-          src={headshot.src}
-          alt="Benjamin posing on a bridge in Acadia, ME"
-          class="rounded-lg w-full max-w-md mx-auto shadow-lg hover:shadow-xl transition-shadow"
+        src={headshot.src}
+        alt="Benjamin posing on a bridge in Acadia, ME"
+        class="rounded-lg w-full max-w-md mx-auto shadow-lg hover:shadow-xl transition-shadow"
       />
     </a>
   </section>
-  {hasProjects && <section id="selected-projects">
-    <div class="section-header-button">
-      <h1>Selected Projects</h1><Chip text="View all" href="/projects/" />
-    </div>
-    <ProjectList />
-  </section>
+  {
+    hasProjects && (
+      <section id="selected-projects">
+        <div class="section-header-button">
+          <>
+            <h1>Selected Projects</h1>
+            <Chip text="View all" href="/projects/" />
+          </>
+        </div>
+        <ProjectList />
+      </section>
+    )
   }
-  {hasPosts && 
-  <section id="recent-articles">
-    <div class="section-header-button">
-      <h1>Recent Writing</h1><Chip text="View all" href="/blog/" />
-    </div>
-    <RecentPostList />
-  </section>
+  {
+    hasPosts && (
+      <section id="recent-articles">
+        <div class="section-header-button">
+          <>
+            <h1>Recent Writing</h1>
+            <Chip text="View all" href="/blog/" />
+          </>
+        </div>
+        <RecentPostList />
+      </section>
+    )
   }
 </div>
 
@@ -77,7 +89,7 @@ const hasPosts = (await getCollection("blog")).length > 0;
       font-size: 56px;
     }
   }
-  
+
   #introduction {
     display: flex;
     flex-direction: column;
@@ -87,7 +99,7 @@ const hasPosts = (await getCollection("blog")).length > 0;
   #headshot {
     padding: 32px;
   }
-  
+
   #headshot img {
     height: 480px;
     box-shadow: var(--box-shadow-static);
