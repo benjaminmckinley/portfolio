@@ -14,7 +14,7 @@ export async function GET(context) {
   return rss({
     title: "Benjamin McKinley | Blog",
     description: "Personal Writing",
-    site: process.env.BASE_URL ?? "",
+    site: process.env.BASE_URL ?? "https://benjaminmckinley.com",
     items: posts.map((post) => {
       return {
         title: post.data.title,
