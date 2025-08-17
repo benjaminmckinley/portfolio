@@ -2,44 +2,6 @@
     <slot />
 </div>
 
-<!--<script>-->
-<!--    document.addEventListener("DOMContentLoaded", () => {-->
-<!--        const copyButtonLabel = "Copy Code";-->
-<!--        const preBlocks = Array.from(document.querySelectorAll("pre"));-->
-
-<!--        async function copyCode(block, button) {-->
-<!--            const code = block.querySelector("code");-->
-<!--            const text = code.innerText;-->
-<!--            await navigator.clipboard.writeText(text);-->
-<!--            button.innerText = "Code Copied";-->
-<!--            setTimeout(() => {-->
-<!--                button.innerText = copyButtonLabel;-->
-<!--            }, 700);-->
-<!--        }-->
-
-<!--        preBlocks.forEach((preBlock) => {-->
-<!--            const preWrapper = document.createElement("div");-->
-<!--            preWrapper.style.position = "relative";-->
-
-<!--            const copyButton = document.createElement("button");-->
-<!--            copyButton.className = "copy-code";-->
-<!--            copyButton.innerHTML = copyButtonLabel;-->
-
-<!--            preBlock.setAttribute("tabindex", "0");-->
-<!--            preBlock.appendChild(copyButton);-->
-<!--            if (preBlock.parentNode) {-->
-<!--                preBlock.parentNode.insertBefore(preWrapper, preBlock);-->
-<!--            }-->
-<!--            preWrapper.appendChild(preBlock);-->
-
-<!--            copyButton.addEventListener("click", async () => {-->
-<!--                await copyCode(preBlock, copyButton);-->
-<!--            });-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
-
-
 <style>
     .markdown-container {
         img {
