@@ -7,5 +7,7 @@ export default {
 	corePlugins: {
 		preflight: false
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography')
+	],
 }

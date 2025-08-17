@@ -2,6 +2,7 @@
 import Layout from "./Layout.astro";
 import {type Post} from "../pages/blog/post";
 import Tags from "../components/Tags.astro";
+import MarkdownLayout from "./MarkdownLayout.astro";
 const { frontmatter, characterCount } = Astro.props;
 
 const post = frontmatter as Post;
@@ -19,11 +20,12 @@ function readingTime() {
         {readingTime} minute read
         <Tags tags={post.tags} baseUrl="/blog" />
     </div>
-
     <h1>{post.title}</h1>
-        <p class="post-description">{post.description}</p>
-        <img class="post-image" src={post.image.url} alt={post.image.alt} />
-    <slot />
+    <p class="post-description">{post.description}</p>
+    <img class="post-image" src={post.image.url} alt={post.image.alt} />
+    <MarkdownLayout>
+        <slot />
+    </MarkdownLayout>
 </Layout>
 
 <style>
