@@ -1,0 +1,73 @@
+<div class="markdown-container prose prose-lg prose-gray dark:prose-invert">
+    <slot />
+</div>
+
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", () => {-->
+<!--        const copyButtonLabel = "Copy Code";-->
+<!--        const preBlocks = Array.from(document.querySelectorAll("pre"));-->
+
+<!--        async function copyCode(block, button) {-->
+<!--            const code = block.querySelector("code");-->
+<!--            const text = code.innerText;-->
+<!--            await navigator.clipboard.writeText(text);-->
+<!--            button.innerText = "Code Copied";-->
+<!--            setTimeout(() => {-->
+<!--                button.innerText = copyButtonLabel;-->
+<!--            }, 700);-->
+<!--        }-->
+
+<!--        preBlocks.forEach((preBlock) => {-->
+<!--            const preWrapper = document.createElement("div");-->
+<!--            preWrapper.style.position = "relative";-->
+
+<!--            const copyButton = document.createElement("button");-->
+<!--            copyButton.className = "copy-code";-->
+<!--            copyButton.innerHTML = copyButtonLabel;-->
+
+<!--            preBlock.setAttribute("tabindex", "0");-->
+<!--            preBlock.appendChild(copyButton);-->
+<!--            if (preBlock.parentNode) {-->
+<!--                preBlock.parentNode.insertBefore(preWrapper, preBlock);-->
+<!--            }-->
+<!--            preWrapper.appendChild(preBlock);-->
+
+<!--            copyButton.addEventListener("click", async () => {-->
+<!--                await copyCode(preBlock, copyButton);-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+
+<style>
+    .markdown-container {
+        img {
+            max-width: 100vw;
+        }
+        pre {
+            background-color: #1f2937; /* Tailwind gray-800 */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #374151; /* Tailwind gray-700 */
+            border-radius: 0.25rem;
+            padding: 0.2em 0.4em;
+            color: #d1fae5; /* Tailwind green-100 */
+        }
+        .copy-code {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #4b5563; /* Tailwind gray-600 */
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+    }
+</style>
