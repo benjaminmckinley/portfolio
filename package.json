@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier . --write",
-    "lint": "npx eslint src/**/*.{js,astro}"
+    "lint": "npx eslint src/**/*.{js,astro}",
+    "generate-favicon": "npx realfavicon generate public/favicon.svg favicon-settings.json output-data.json public"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -35,6 +36,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@realfavicongenerator/generate-favicon": "^0.4.16",
     "@types/hast": "^3.0.4",
     "@typescript-eslint/parser": "^8.19.1",
     "eslint": "^9.18.0",

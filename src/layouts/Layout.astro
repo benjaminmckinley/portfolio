@@ -2,30 +2,46 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+
+const { GTM_ID, ENVIRONMENT } = import.meta.env;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1C5K1C5HG"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H1C5K1C5HG");
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    {ENVIRONMENT === 'production' && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}>
+      </script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", GTM_ID);
+      </script>
+    )}
+    <!-- Favicon setup (realfavicon) -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Font setup (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
       rel="stylesheet"
+    />
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Software Engineering Blog" />
+    <meta
+      name="keywords"
+      content="blog, software engineering, coding, professional, resume"
     />
     <title>Benjamin McKinley</title>
   </head>

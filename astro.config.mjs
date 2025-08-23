@@ -5,9 +5,9 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import * as dotenv from "dotenv";
+import { loadEnv } from "vite";
 
-dotenv.config();
+const { BASE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
       nesting: true,
     }),
   ],
-  site: process.env.BASE_URL,
+  site: BASE_URL,
   markdown: {
     rehypePlugins: [
       rehypeSlug,
