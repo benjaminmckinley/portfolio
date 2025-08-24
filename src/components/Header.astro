@@ -1,6 +1,6 @@
 ---
-import Navigation from "./Navigation.astro";
 import SignatureLogo from "../assets/signature-logo.svg";
+import { Navigation } from "./Navigation";
 ---
 
 <header>
@@ -11,7 +11,7 @@ import SignatureLogo from "../assets/signature-logo.svg";
       </a>
       <a href="/" id="logo-text">Benjamin McKinley</a>
     </div>
-    <Navigation />
+    <Navigation client:only />
   </nav>
 </header>
 
