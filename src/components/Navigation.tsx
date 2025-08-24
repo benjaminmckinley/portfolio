@@ -30,11 +30,12 @@ export const Navigation: React.FC = () => {
       }}
     >
       {routes.map((route) => {
+          const active = window.location.pathname === route.path;
         return (
           <li
             key={route.title}
             style={{
-              textDecoration: window.location.pathname.startsWith(route.path)
+              textDecoration: active
                 ? "underline"
                 : "none",
             }}
@@ -87,14 +88,18 @@ const MobileNavigation = () => {
             ✕
           </button>
           <ul id="mobile-menu" style={navListStyle}>
-            {routes.map(({ title, path }) => (
-              <NavItem
-                key={title}
-                title={title}
-                path={path}
-                onClick={() => setIsOpen(false)}
-              />
-            ))}
+            {routes.map(({ title, path }) => {
+                const active = window.location.pathname === path;
+               return <MobileNavItem
+                key = {title}
+                active={active}
+                title = {title}
+                path = {path}
+                onClick = {() =>
+                setIsOpen(false)
+            }
+                />
+            })}
           </ul>
         </div>
       </CollapsibleMenu>
@@ -102,31 +107,43 @@ const MobileNavigation = () => {
   );
 };
 
-const NavItem: React.FC<{
-  title: string;
-  path: string;
-  onClick: () => void;
-}> = ({ title, path, onClick }) => {
-  const itemStyle: CSSProperties = {
-    margin: "1rem 0",
-    fontSize: "1.5rem",
-    cursor: "pointer",
-  };
+const MobileNavItem: React.FC<{
+    title: string;
+    path: string;
+    active?: boolean;
+    onClick: () => void;
+}> = ({ title, path, active, onClick }) => {
+    const itemStyles: React.CSSProperties = {
+        position: "relative",
+        paddingLeft: "0",   
+        display: "flex",
+        alignItems: "center",
+    };
 
-  const linkStyle: CSSProperties = {
-    color: "#fff",
-    textDecoration: "none",
-  };
+    const indicatorStyles: React.CSSProperties = {
+        position: "absolute", 
+        left: "-20px",     
+        top: "50%",        
+        transform: "translateY(-50%)", 
+        transition: "color 0.3s",
+    };
 
-  return (
-    <li style={itemStyle}>
-      <a onClick={onClick} style={linkStyle} href={path}>
-        {title}
-      </a>
-    </li>
-  );
+    const linkStyles: React.CSSProperties = {
+        fontSize: "1.5rem",
+        color: "#fff",
+        textDecoration: "none",
+        cursor: "pointer",
+    };
+
+    return (
+        <li style={itemStyles}>
+            {active && <span style={indicatorStyles}>△</span>}
+            <a href={path} style={linkStyles} onClick={onClick}>
+                {title}
+            </a>
+        </li>
+    );
 };
-
 interface CollapsibleMenuProps {
   direction?: "top" | "bottom" | "left" | "right";
   open?: boolean;
